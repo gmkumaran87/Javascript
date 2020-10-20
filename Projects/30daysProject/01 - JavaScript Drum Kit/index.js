@@ -20,8 +20,7 @@ function playClickSound(e) {
 
     console.log(e)
     if (e.target.className = 'key') {
-        console.log('I am in div-key')
-        console.log(e.target.attributes[0].nodeValue);
+       
         var audio = document.querySelector(`audio[data-key="${e.target.attributes[0].nodeValue}"]`);
         if (!audio) return;
         audio.currentTime = 0;
