@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery example: 'mousemove' event</title>
+    <style media="screen">
+      #img-hopper{
+        position: absolute;
+      }
+      .draw{
+        position: absolute;
+        background: black;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="img-hopper" src="https://www.kasandbox.org/programming-images/creatures/Hopper-Jumping.png" alt="">
+
+  </body>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+  </script>
+
+  <script type="text/javascript">
+    $(document).mousemove(function(event){
+      $('#img-hopper').css({left: event.pageX, top: event.pageY});
+      $('<div></div>')
+        .addClass('draw')
+        .css({left: event.pageX, top: event.pageY})
+        .appendTo('body');
+
+    })
+  </script>
+</html>
