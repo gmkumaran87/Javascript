@@ -1,0 +1,24 @@
+body{
+    min-height: 100vh;
+    min-width: 100vh;
+    margin: 0;
+}
+.bg-img{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    z-index: -1;
+}
+.new-img{
+    width: 80%;
+    height: 80%;
+    position: relative;
+    z-index: 2;
+}
+
+#leafers {
+    position: absolute;
+    top: 510px;
+    left: 760px;
+    z-index: 5;
+}
