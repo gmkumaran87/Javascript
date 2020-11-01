@@ -1,0 +1,11 @@
+// Only change code below this line
+function urlSlug(title) {
+  
+let newArray = title.toLowerCase().split(' ')
+  .filter(function(str){
+    
+    return str.trim() !== '';
+  }).join('-');
+return newArray;
+}
+// Only change code above this line
