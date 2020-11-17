@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: lightblue;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.wrapper {
+    margin: 100px auto;
+    border: 1px solid blue;
+    box-shadow: 3px 3px 4px grey;
+    border-radius: 3px;
+    background-color: white;
+    width: 400px;
+}
+
+form {
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 70px;
+}
+
+#cart {
+    width: 75%;
+    height: 35px;
+}
+
+#submit {
+    padding: 5px;
+    color: white;
+    background-color: blueviolet;
+    width: 80px;
+    height: 35px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.items {
+    padding: 1rem 10px;
+    font-size: 1.2rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+.wrapper input[type="checkbox"] {
+    margin-right: 0;
+}
+
+.wrapper input[type="checkbox"]:checked+.itemName {
+    opacity: 0.5;
+}
+
+.wrapper #remove {
+    padding: 0;
+    font-size: .2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-color: brown;
+    color: whitesmoke;
+    width: 20px;
+}
+
+.wrapper button:hover {
+    transform: scale(1.4);
+}
+
+/*# sourceMappingURL=/shopping.c64a7cbe.css.map */
