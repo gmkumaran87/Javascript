@@ -7,9 +7,11 @@ const $modalInner = $('.modal-inner');
 function handleClick(e) {
     const $button = e.currentTarget;
     const div = $button.closest('.card');
+
     const $img = $(div).children('img');
     const $src = $img.attr('src');
     const $alt = $img.attr('alt');
+    console.log($src);
     const $desc = $(div).data().description;
 
     /* noeslint */
