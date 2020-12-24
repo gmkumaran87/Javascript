@@ -8,6 +8,8 @@ function Gallery(gall) {
 
     function closeModal() {
         $modal.removeClass('open');
+
+        $(document).off('keyup', handleKeyUp);
     }
 
     function handleKeyUp(event) {
@@ -57,10 +59,19 @@ function Gallery(gall) {
         openModal();
     }
 
+    function handleClickOutside(e) {
+        console.log(e.target);
+        if (e.target === e.currentTarget) {
+            closeModal();
+        }
+    }
+
     // Creating Event Listeners for the Image Pop-Up
     $images.toArray().forEach((el) => {
         $(el).on('click', (e) => showImage(e.currentTarget));
     });
+
+    $modal.on('click', handleClickOutside);
 }
 
 const gallery1 = Gallery($('.gallery1'));

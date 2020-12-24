@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calback functions</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+        
+        .go {
+            margin: 2rem auto;
+            background-color: white;
+            width: 12rem;
+            height: 12rem;
+            color: black;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            transition: all .3s;
+        }
+        
+        .go.circle {
+            border-radius: 50%;
+        }
+        
+        .go.red {
+            background-color: red;
+            color: white;
+        }
+        
+        .go.purple {
+            background-color: purple;
+            color: white;
+        }
+        
+        .go.fade {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="go">Click Me..!</div>
+
+    <script>
+        const go = document.querySelector('.go');
+        go.addEventListener('click', (e) => {
+            const el = e.currentTarget;
+            el.textContent = 'GO!';
+
+            // Make it Circle after 2s
+            setTimeout(function() {
+                el.classList.add('circle');
+                // Make it red after .5s
+                setTimeout(function() {
+                    el.classList.add('red');
+                    // Make it square after .2s
+                    setTimeout(function() {
+                        el.classList.remove('circle');
+                        // Make it Purple
+                        setTimeout(function() {
+                            // el.classList.remove('red');
+                            el.classList.add('purple');
+                            // Fade Out after 2s
+                            setTimeout(function() {
+                                el.classList.add('fade');
+                            }, 200);
+                        }, 300);
+                    }, 400);
+                }, 500);
+            }, 2000);
+        });
+    </script>
+
+</body>
+
+</html>
