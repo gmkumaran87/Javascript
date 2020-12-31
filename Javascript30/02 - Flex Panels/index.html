@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Panels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>I am waiting</p>
+            <p> Come here</p>
+            <p>Enjoy</p>
+        </div>
+        <div class="panel panel2">
+            <p>I am waiting</p>
+            <p> Come here</p>
+            <p>Enjoy</p>
+        </div>
+        <div class="panel panel3">
+            <p>I am waiting</p>
+            <p> Come here</p>
+            <p>Enjoy</p>
+        </div>
+        <div class="panel panel4">
+            <p>I am waiting</p>
+            <p> Come here</p>
+            <p>Enjoy</p>
+        </div>
+        <div class="panel panel5">
+            <p>I am waiting</p>
+            <p> Come here</p>
+            <p>Enjoy</p>
+        </div>
+
+    </div>
+    <script>
+        const el = document.querySelectorAll('.panel')
+
+
+
+        function displayFlex(e) {
+
+            const openEl = document.querySelectorAll('.open');
+
+            openEl.forEach(el => {
+                console.log('inside Open');
+                console.log(el);
+                el.classList.remove('open');
+            })
+
+            this.classList.toggle('open');
+        }
+
+        function diaplayToggle(e) {
+
+            if (e.propertyName.includes('flex')) this.classList.toggle('open-active')
+        }
+        el.forEach(elem => elem.addEventListener('click', displayFlex));
+        el.forEach(elem => elem.addEventListener('transitionend', diaplayToggle));
+    </script>
+</body>
+
+</html>
