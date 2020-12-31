@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calback functions</title>
+    <style>
+        body {
+            background-color: yellow;
+        }
+        
+        .go {
+            margin: 2rem auto;
+            background-color: white;
+            width: 12rem;
+            height: 12rem;
+            color: black;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            transition: all .3s;
+        }
+        
+        .go.circle {
+            border-radius: 50%;
+        }
+        
+        .go.red {
+            background-color: red;
+            color: white;
+        }
+        
+        .go.purple {
+            background-color: purple;
+            color: white;
+        }
+        
+        .go.fade {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="go">Click Me..!</div>
+
+    <script>
+        function wait(time = 0) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('Hi called me after 2s');
+                }, time);
+            });
+        }
+
+        const newTime = wait(2000).then((msg) => console.log(msg));
+        console.log(newTime);
+
+        function animate(e) {
+            const el = e.currentTarget;
+            el.textContent = 'Gooo..!';
+
+            // Make it Circle after 2s
+            wait(2000)
+                .then(() => {
+                    el.classList.add('circle');
+                    return wait(500);
+                })
+                .then(() => {
+                    el.classList.add('red');
+                    return wait(300);
+                })
+                .then(() => {
+                    el.classList.remove('circle');
+                    return wait(300);
+                })
+                .then(() => {
+                    el.classList.add('purple');
+                    return wait(300);
+                })
+                .then(() => {
+                    el.classList.add('fade');
+                    console.log('Completed');
+                });
+        }
+
+        const go = document.querySelector('.go');
+
+        go.addEventListener('click', animate);
+    </script>
+
+</body>
+
+</html>

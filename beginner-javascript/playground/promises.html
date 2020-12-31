@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+
+<body>
+
+    <script>
+        function makePizzas(toppings = []) {
+            const orderTime = 5000; // Time in milliseconds 5s
+            const toppingTime = 200; // Time allowed for preparing on topping
+
+            const timeTaken = (orderTime + toppings.length * toppingTime) / 1000;
+
+            const myPromise = new Promise((resolve, reject) => {
+                // condition
+                if (toppings.includes('pineapple')) reject('No Pineapples, Sorry rejected the Order.');
+                setTimeout(function() {
+                    resolve(`Your pizza is ready with ${toppings.join(' ')} and the Order time is ${timeTaken} seconds.`);
+                }, timeTaken);
+            });
+            return myPromise;
+        }
+
+        const newPizza = makePizzas(['grapes']);
+        console.log(newPizza);
+
+        newPizza
+            .then((msg) => {
+                console.log(msg);
+                return makePizzas(['Onion']);
+            })
+            .then((msg) => {
+                console.log(msg);
+                return makePizzas(['one', 'two', 'three', 'four', 'five', 'six']);
+            })
+            .then((msg) => {
+                console.log(msg);
+            })
+            .catch((msg) => {
+                console.log(msg);
+            });
+
+        const pizzaPromise1 = makePizzas(['hot peppers', 'onion', 'feta']);
+        const pizzaPromise2 = makePizzas([
+            'one',
+            'two',
+            'three',
+            'four',
+            'one',
+            'two',
+            'three',
+            'four',
+            'one',
+            'two',
+            'three',
+            'four',
+        ]);
+        const pizzaPromise3 = makePizzas(['ham', 'cheese']);
+
+        const allPromises = Promise.all([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
+
+        allPromises.then((msg) => {
+            console.log(msg);
+        });
+    </script>
+</body>
+
+</html>
