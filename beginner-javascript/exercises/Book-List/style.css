@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-white: #f3f3f3;
+    --color-darkblue: #182c61;
+    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+    --color-green: #37af65;
+    --color-organge: #fea47f;
+}
+
+body {
+    background-color: var(--color-organge);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    /*justify-content: center;*/
+    align-items: center;
+    height: 100vh;
+    color: var(--color-white);
+}
+
+form {
+    background-color: var(--color-darkblue);
+    border-radius: 6px;
+    padding: 20px 30px;
+    width: 60vw;
+}
+
+.form-control input {
+    display: block;
+    padding: 10px 0px;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.submit {
+    padding: 8px 0;
+    background-color: var(--color-green);
+    margin: 5px 0;
+    border: none;
+    width: 80%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.submit:active {
+    transform: scale(.8);
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.book-table {
+    background-color: var(--color-darkblue-alpha);
+    font-family: inherit;
+    font-size: 1rem;
+    margin: 50px 0;
+    width: 60vw;
+    text-align: left;
+}
+
+.book-table thead {
+    margin: 25px;
+    padding: 25px 0;
+    border: 5px;
+}
+
+tbody {
+    margin: 30px;
+    padding: 20px;
+    border: 5px;
+}
+
+.success,
+.error {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: var(--color-green);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}

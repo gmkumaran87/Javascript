@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    background-color: lightskyblue
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+.container {
+    height: 100vh;
+    width: 80vw;
+    display: flex;
+    flex-flow: column;
+    margin: 0px;
+    padding: 0;
+}
+
+.jokes-form {
+    background-color: indianred;
+    height: 40%;
+}
+
+.jokes-list {
+    margin: 30px 0;
+    left-padding: 0px;
+}
+
+.jokes-label,
+.jokes-input {
+    display: block;
+    padding: 5px 0px;
+    margin: 10px 10px;
+    width: 50%;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.btn {
+    margin: 5px 10px;
+    padding: 5px;
+    width: 80px;
+    font-family: inherit;
+    font-size: 1.12rem;
+    background-color: khaki;
+    border-radius: 5px;
+}
