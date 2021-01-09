@@ -3,5 +3,38 @@
 }
 
 body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 100vw;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    max-width: 15rem;
     text-align: center;
+}
+
+.alert {
+    color: red;
+    margin: 5px auto;
+}
+
+.btnFind {
+    width: 30%;
+    background-color: lightskyblue;
+    padding: 2px;
+    margin: 15px auto;
+}
+
+.profileDisplay {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto;
+}
+
+a>.btn {
+    margin 20px 0;
 }
