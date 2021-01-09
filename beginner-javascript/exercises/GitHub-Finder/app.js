@@ -11,7 +11,6 @@ button.addEventListener('click', profileFinder);
 
 function profileFinder(e) {
     const users = form.value;
-    console.log(users);
 
     if (users !== '') {
         // GET username profile from GitHub
@@ -21,12 +20,11 @@ function profileFinder(e) {
                 ui.displayProfile(data);
             } else {
                 // Show Alert message
-                console.log('Here');
-
-                profileDisplay.innerHTML = `<h2 class="alert"> Username ${users} is NOT FOUND...</h2>`;
+                ui.showAlert('User does not found in GitHub...', 'alert');
             }
         });
     } else {
         // Clear the Screen
+        ui.clearProfile();
     }
 }

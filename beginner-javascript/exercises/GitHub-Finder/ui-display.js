@@ -43,4 +43,30 @@ class UI {
       <div class="card-body"></div>
       </div>`;
     }
+
+    clearProfile() {
+        this.profile.innerHTML = '';
+    }
+
+    // Show Alert message
+    // eslint-disable-next-line class-methods-use-this
+    showAlert(message, className) {
+        const navbar = document.querySelector('.navbar');
+        const div = document.createElement('div');
+        div.className = className;
+
+        const h3 = document.createElement('h3');
+        h3.innerHTML = message;
+
+        div.appendChild(h3);
+
+        navbar.after(div);
+
+        setTimeout(this.clearAlert, 3000);
+    }
+
+    clearAlert() {
+        const alert = document.querySelector('.alert');
+        alert.remove();
+    }
 }
