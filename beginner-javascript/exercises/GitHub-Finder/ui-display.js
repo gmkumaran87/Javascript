@@ -4,8 +4,6 @@ class UI {
     }
 
     displayProfile(data) {
-        console.log(data);
-
         this.profile.innerHTML = `<div class="card card-body" style="width:100%">
         <div class="row">
           <div class="col-md-3">
@@ -40,7 +38,7 @@ class UI {
       <div class="card-header">
       <h2> List of Repositories</h2>
       </div>
-      <div class="card-body"></div>
+      <div class="card-body repos"></div>
       </div>`;
     }
 
@@ -68,5 +66,28 @@ class UI {
     clearAlert() {
         const alert = document.querySelector('.alert');
         alert.remove();
+    }
+
+    showRepos(repos) {
+        const reposDisplay = document.querySelector('.repos');
+
+        let output = '';
+
+        repos.forEach((repo) => {
+            output += `<div class="card card-body">
+                      <div class= "row"> 
+                      <div class="col-md-6">
+                        <a href="${repo.html_url}" target = "_blank">${repo.name}</a>
+                      </div>
+
+                      <div class="col-md-6">
+                      <span class ="btn btn-primary"> Stars : ${repo.stargazers_count} </span>
+              <span class ="btn btn-secondary"> Watchers : ${repo.watchers_count} </span>
+              <span class ="btn btn-success"> Forks: ${repo.forks} </span>
+                      </div>
+                      </div>
+            </div>`;
+        });
+        reposDisplay.innerHTML = output;
     }
 }

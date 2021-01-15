@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto';
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.bttn-container {
+    width: 150px;
+}
+
+.weather-body {
+    background-color: #6f9eaf;
+}
+
+.temp,
+.temp-desc {
+    margin: 0 auto;
+    max-width: 200px;
+}

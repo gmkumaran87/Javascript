@@ -38,3 +38,10 @@ body {
 a>.btn {
     margin 20px 0;
 }
+
+.repos a {
+    text-decoration: none;
+    font-family: inherit;
+    color: black;
+    text-align: center;
+}
