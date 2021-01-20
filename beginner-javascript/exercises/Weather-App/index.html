@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11698e">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11698e; font-size: 2rem;">
 
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Forecast</a>
@@ -23,7 +23,7 @@
             </div>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search the City" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button id="tempSearch" class="btn btn-primary" type="submit">Search</button>
             </form>
 
         </div>
@@ -31,23 +31,83 @@
 
     <div class="weather-body p-5 mt-0">
         <div class="city">
-            <h2 class="card-title text-center">Tenkasi, TN</h2>
+            <h2 id="city" class="card-title text-center">Tenkasi, TN</h2>
         </div>
         <div class="temp row">
-            <div class="col-4 mt-4"><i class="fa fa-twitter p-2"></i></div>
+            <div id="tempImage" class="col-4 mt-4"><img src="#" alt=""></div>
             <div class="col-4">
-                <h1 class="card-title pl-2 text-center" style="font-size: 4rem ;">30 </h1>
+                <h1 id="tempDisp" class="card-title" style="font-size: 5rem ;">30 </h1>
+                <span class="degree">&#176</span>
             </div>
-            <div class="col-4">
-                <h4 class="mt-2 pl-1" style="margin-left: 20px;">C</h4>
+            <div class="col-4 temp-type">
+                <h4 class="celcius">C</h4>
+                <h4 class="farenheit">F</h4>
             </div>
         </div>
-        <div class="temp-desc row">
-            <div class="col-12 pl-2 ml-3">Light Showers</div>
+        <div class="temp-desc">
+            <h3 id="tempDesc" class="text-center" style="font-size:1.5rem;">Light Showers</h3>
+            <h4 id="tempDate">Updated as on</h4>
+            <div class="visibility row">
+                <div class="col-4" style="width: 140px;">
+                    <h5 id="feels">Feels Like 25</h5>
+                </div>
+                <div class="col-4" style="width: 170px;">
+                    <h5 id="wind">Wind <span>*</span></h5>
+                </div>
+                <div class="col-4" style="width: 140px;">
+                    <h5 id="visibility">Visibility <span>*</span></h5>
+                </div>
+            </div>
+        </div>
 
+        <div class="future-temp row ">
+            <div class="col-3 ">
+                <div class="card mt-2 future ">
+                    <div class="card-body ">
+                        <h4 class="text-left ">Fri 25</h4>
+                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 ">
+                <div class="card mt-2 future ">
+                    <div class="card-body ">
+                        <h4 class="text-left ">Fri 25</h4>
+                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 ">
+                <div class="card mt-2 future ">
+                    <div class="card-body ">
+                        <h4 class="text-left ">Fri 25</h4>
+                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 ">
+                <div class="card mt-2 future ">
+                    <div class="card-body ">
+                        <h4 class="text-left ">Fri 25</h4>
+                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
+                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
+
+    <script src="weather.js "></script>
+    <script src="ui.js "></script>
+    <script src="app.js "></script>
 
 </body>
 

@@ -12,14 +12,13 @@ const faren = document.querySelector('.farenheit');
 console.log(faren);
 
 faren.addEventListener('click', function() {
-    console.log(this);
     this.classList.add('selected');
     this.classList.add('bordered');
     setTimeout(() => {
-        console.log(this);
         this.classList.remove('bordered');
     }, 2000);
-    ui.tempChange;
+    console.log('After de-border');
+    ui.tempChange();
 });
 
 function getUpdates(e) {
