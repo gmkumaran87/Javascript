@@ -1,6 +1,6 @@
 class Weather {
     constructor() {
-        this.appId = '37a4f98562cccd79e08032830a635a0a';
+        this.appId = '#';
         this.faranheit = 273.15;
     }
 
