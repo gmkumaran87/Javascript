@@ -1,36 +1,73 @@
 const form = document.querySelector('.form-control');
 const search = document.getElementById('tempSearch');
 
-const weather = new Weather();
+const faren = document.querySelector('.farenheit');
+const celcius = document.querySelector('.celcius');
+
+const storage = new Storage();
+const weatherLoc = storage.getStorageData();
+
+const weather = new Weather(weatherLoc.city, weatherLoc.country);
 const ui = new UI();
 
+// Setting the flag whether the displaying Temp in Celcius or Faranheit
+let tempFlag = 'C';
+
+// Show the Initial City for the App
+window.addEventListener('DOMContentLoaded', getUpdates);
+
 // Add Event Listener
-search.addEventListener('click', getUpdates);
+search.addEventListener('click', (e) => {
+    e.preventDefault();
 
-// Event Listener for Farenheit
-const faren = document.querySelector('.farenheit');
-console.log(faren);
+    const place = form.value;
 
-faren.addEventListener('click', function() {
-    this.classList.add('selected');
-    this.classList.add('bordered');
+    [city, country] = place.split(',');
+
+    weather.changeWeatherLoc(city, country);
+
+    storage.setStorageData(city, country);
+    getUpdates();
+});
+
+function getUpdates() {
+    weather.getWeather().then((data) => {
+        console.log(data);
+        // Displaying the Temperature in the UI
+        ui.displayTemp(data);
+    });
+}
+
+function displayTemp() {
+    tempFlag = this.textContent;
+
+    // REmove the CSS Selected    if it is assigned already
+    const select = document.querySelector('.selected');
+    if (select) {
+        select.classList.remove('selected');
+    }
+
+    this.classList.toggle('selected');
+    this.classList.toggle('bordered');
     setTimeout(() => {
         this.classList.remove('bordered');
     }, 2000);
-    console.log('After de-border');
-    ui.tempChange();
-});
 
-function getUpdates(e) {
-    e.preventDefault();
+    ui.tempChange(tempFlag);
 
-    const city = form.value;
+    setEventListener();
+}
 
-    if (city !== '') {
-        weather.getWeather(city).then((data) => {
-            console.log(data);
-            // Displaying the Temperature in the UI
-            ui.displayTemp(data);
-        });
+// Event Listener for Farenheit
+
+function setEventListener() {
+    if (tempFlag === 'C') {
+        celcius.removeEventListener('click', displayTemp);
+        faren.addEventListener('click', displayTemp);
+    } else {
+        faren.removeEventListener('click', displayTemp);
+        celcius.addEventListener('click', displayTemp);
     }
 }
+
+setEventListener();

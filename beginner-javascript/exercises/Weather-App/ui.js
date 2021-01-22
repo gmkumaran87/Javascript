@@ -21,27 +21,30 @@ class UI {
         // Displaying the Temperature
         this.tempEl.innerHTML = `${Math.floor(data.main.temp - 273.15)}`;
 
-        console.log(this.image);
-        this.image.src = '.images/Sunny.png';
-
         // Display description
         this.tempDescEl.innerHTML = data.weather[0].main;
+
+        /* if (data.weather[0].main === 'Clouds') {
+            document.querySelector('.weather-body').style.backgroundImage = "url('images/clouds_background.jpeg')";
+        } */
+
+        this.image.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
 
         // Temperature date
         this.tempDateEl.innerHTML = `Updated as on ${timestr}`;
 
         // Feels Like
-        this.feels.innerHTML = `Feels like  ${this.tempInCelcius(data.main.feels_like)} <span>&#176</span>`;
+        this.feels.innerHTML = `Feels like  ${Math.floor(data.main.feels_like - 273.15)} <span>&#176</span>`;
 
         // Wind
-        this.wind.innerHTML = `Wind ${data.wind.speed * 3.6} Km/h`;
+        this.wind.innerHTML = `Wind ${Math.floor(data.wind.speed * 3.6)} Km/h`;
 
         // Visibility
         this.visible.innerHTML = `Visibility ${data.visibility / 1000} Km`;
     }
 
     tempInCelcius(temp) {
-        return Math.floor(temp - 273.15);
+        return Math.floor(((temp - 32) * 5) / 9);
     }
 
     tempInFaranheit(temp) {
@@ -49,9 +52,13 @@ class UI {
     }
 
     // Change the temperature from Celcius to Farenheit
-    tempChange() {
+    tempChange(flag) {
         const newTemp = document.getElementById('tempDisp');
-        console.log(newTemp.textContent);
-        newTemp.innerHTML = `${this.tempInFaranheit(newTemp.textContent)}`;
+
+        if (flag === 'F') {
+            newTemp.innerHTML = `${this.tempInFaranheit(newTemp.textContent)}`;
+        } else {
+            newTemp.innerHTML = `${this.tempInCelcius(newTemp.textContent)}`;
+        }
     }
 }

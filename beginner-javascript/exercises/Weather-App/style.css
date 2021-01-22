@@ -12,6 +12,12 @@ body {
     color: white;
 }
 
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .container-fluid>.navbar-brand {
     color: white;
 }
@@ -22,30 +28,52 @@ body {
 }
 
 .weather-body {
+    position: absolute;
+    top: 55px;
+    padding: 10px;
     background-color: #6f9eaf;
-    background-image: url(images/fotografierende-3ENfnnjbdJs-unsplash.jpg);
     background-position: center;
     background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }
 
 .temp {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 270px;
     position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#tempImage {
+    width: 105px;
+    height: 105px;
+}
+
+.tempDisplay {
+    padding-top: 15px;
+    height: 105px;
+    margin: auto;
+    width: 90px;
+    font-size: 3.8rem;
+    margin: 25px 20px 0 0;
+    padding: 0;
 }
 
 .degree {
     position: absolute;
-    left: 240px;
-    top: 10px;
+    left: 180px;
+    top: 24px;
     font-size: 2rem;
 }
 
 .temp-type {
-    width: 50px;
-    position: absolute;
-    left: 275px;
-    top: 7px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 55px;
     align-items: center;
     text-align: center;
 }
@@ -76,16 +104,6 @@ body {
 .visibility h5 {
     padding: 5px;
     font-size: 15px;
-}
-
-.future-temp {
-    padding: 40px;
-}
-
-.future {
-    background: none;
-    border: 1px solid white;
-    margin-top: 50px;
 }
 
 .selected {

@@ -16,11 +16,8 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #11698e; font-size: 2rem;">
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Forecast</a>
-            <div class="bttn-container">
-                <button class="btn refresh"><i class="fa fa-refresh"></i></button>
-                <button class="btn dark-mode"><i class="fa fa-twitter"></i></button>
-            </div>
+            <a class="navbar-brand" href="#">Weather Forecast</a>
+
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search the City" aria-label="Search">
                 <button id="tempSearch" class="btn btn-primary" type="submit">Search</button>
@@ -33,13 +30,11 @@
         <div class="city">
             <h2 id="city" class="card-title text-center">Tenkasi, TN</h2>
         </div>
-        <div class="temp row">
-            <div id="tempImage" class="col-4 mt-4"><img src="#" alt=""></div>
-            <div class="col-4">
-                <h1 id="tempDisp" class="card-title" style="font-size: 5rem ;">30 </h1>
-                <span class="degree">&#176</span>
-            </div>
-            <div class="col-4 temp-type">
+        <div class="temp">
+            <img id="tempImage" src='' alt="">
+            <h1 id="tempDisp" class="tempDisplay">30 </h1>
+            <span class="degree">&#176</span>
+            <div class="temp-type">
                 <h4 class="celcius">C</h4>
                 <h4 class="farenheit">F</h4>
             </div>
@@ -54,60 +49,19 @@
                 <div class="col-4" style="width: 170px;">
                     <h5 id="wind">Wind <span>*</span></h5>
                 </div>
-                <div class="col-4" style="width: 140px;">
+                <div class="col-4" style="width: 160px;">
                     <h5 id="visibility">Visibility <span>*</span></h5>
                 </div>
             </div>
         </div>
 
-        <div class="future-temp row ">
-            <div class="col-3 ">
-                <div class="card mt-2 future ">
-                    <div class="card-body ">
-                        <h4 class="text-left ">Fri 25</h4>
-                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 ">
-                <div class="card mt-2 future ">
-                    <div class="card-body ">
-                        <h4 class="text-left ">Fri 25</h4>
-                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 ">
-                <div class="card mt-2 future ">
-                    <div class="card-body ">
-                        <h4 class="text-left ">Fri 25</h4>
-                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 ">
-                <div class="card mt-2 future ">
-                    <div class="card-body ">
-                        <h4 class="text-left ">Fri 25</h4>
-                        <div class="col-4 mt-4 "><i class="fa fa-twitter "></i></div>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">C</h4>
-                        <h4 class="mt-2 pl-1 " style="margin-left: 20px; ">F</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
 
-    <script src="weather.js "></script>
-    <script src="ui.js "></script>
-    <script src="app.js "></script>
+
+        <script src="weather.js "></script>
+        <script src="ui.js "></script>
+        <script src="storage.js"></script>
+        <script src="app.js "></script>
 
 </body>
 
