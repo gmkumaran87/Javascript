@@ -27,6 +27,13 @@ body {
     color: white;
 }
 
+@media(max-width:500px) {
+    .weather-body {
+        z-index: -1;
+        top: 60px;
+    }
+}
+
 .weather-body {
     position: absolute;
     top: 55px;
