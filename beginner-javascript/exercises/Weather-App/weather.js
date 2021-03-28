@@ -2,7 +2,7 @@ class Weather {
     constructor(city, country) {
         this.city = city;
         this.country = country;
-        this.appId = '';
+        this.appId = '37a4f98562cccd79e08032830a635a0a';
         this.faranheit = 273.15;
     }
 
