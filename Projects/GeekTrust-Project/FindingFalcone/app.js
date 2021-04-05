@@ -23,6 +23,9 @@ let vehicles_details = [];
 // Storing the list of values selected from the Drop Down list.
 let selectedValues = {};
 
+// Storing the selected Radio button
+let selectedRadio = {};
+
 
 // Getting the Planets details
 const planets = http.get('https://findfalcone.herokuapp.com/planets').then(data => {
@@ -99,19 +102,30 @@ function updateDropDown(e) {
     // Updating the Vehicle Radio buttons based on the Planet selected
     ui.showRadioButton(currElem, currPlanet, vehicles_details);
 
+    const radioBtns = document.querySelectorAll("input[type=radio]")
+
+
+    radioBtns.forEach(radio => {
+        radio.addEventListener('change', btnClick);
+    });
+
 }
 
 function btnClick(e) {
-    console.log(e.currentTarget);
+
+    let currRadioBtn = e.currentTarget;
+    const noOfVehicles = parseInt(currRadioBtn.dataset.number);
+    let newCount = noOfVehicles - 1;
+    const vehicleId = currRadioBtn.id.split('-');
+
+    selectedRadio[vehicleId[1]] = newCount;
+
+    console.log(selectedRadio);
+    ui.updateRadioButton(currRadioBtn, newCount, vehicles_details)
+
 }
+
+
 inputList.forEach(elem => {
     elem.addEventListener('change', updateDropDown);
 })
-
-const radioBtns = document.querySelectorAll("input[type=radio]")
-
-radioBtns.forEach(radio => {
-    radio.addEventListener('change', btnClick);
-});
-
-console.log(radioBtns);
