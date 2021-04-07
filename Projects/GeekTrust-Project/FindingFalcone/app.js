@@ -17,11 +17,15 @@ const resultBtn = document.getElementById('btnResult');
 
 const http = new HttpFetch();
 const ui = new UI();
+
+let time = 0;
 // Storing the Planet List
 let initialPlanets = [];
 let planet_details = [];
 let vehicles_details = [];
 
+//Storing Distance of the Planets
+let planet_dist = {};
 // Storing the list of values selected from the Drop Down list.
 let selectedValues = {};
 
@@ -59,8 +63,6 @@ const vehicles = http.get('https://findfalcone.herokuapp.com/vehicles').then(res
 // Getting the Token
 const apiToken = http.post('https://findfalcone.herokuapp.com/token', {}).then(res => {
     finalDetails['token'] = res.token;
-    console.log(res);
-    console.log(finalDetails);
 
 });
 
@@ -90,6 +92,8 @@ function updateDropDown(e) {
 
     });
 
+    // Storing the selected Planet and its distance.
+    planet_dist[currElem.name] = currPlanet;
 
     // Update the Planets in the Dropdown list based on the selection
     inputList.forEach(list => {
@@ -123,28 +127,33 @@ function btnClick(e) {
     const [currId, currIdName] = currRadioBtn.id.split('-');
 
     if (selectedRadio[currId]) {
-        console.log('Value presents')
-        console.log(selectedRadio[currId]);
+
         const prevBtn = document.getElementById(`${selectedRadio[currId]}`)
         const prevCnt = parseInt(prevBtn.dataset.number) + 1;
-        console.log(prevBtn);
+
         ui.updateRadioButton(prevBtn, prevCnt, vehicles_details)
     }
     selectedRadio[currId] = currRadioBtn.id;
 
-    console.log(selectedRadio);
+    /*console.log(selectedRadio);
+    console.log(planet_dist);*/
     ui.updateRadioButton(currRadioBtn, newCount, vehicles_details)
 
+    const vehicle_dist = vehicles_details.find(e => e['name'] === currRadioBtn.dataset.name)['speed'];
+    time += planet_dist[currId]['distance'] / vehicle_dist;
+    console.log(time);
     finalDetails['vehicle_names'].push(currRadioBtn.dataset.name);
 
-    console.log(finalDetails);
+    const timeTaken = document.querySelector('.timeTaken');
+
+    timeTaken.innerHTML = time;
+
 }
 
 
 function showResults(e) {
 
     console.log(e.currentTarget);
-
 
 
     const inputData = { 'token': 'IdIggIIukusSUiEjzpIdlLlTnlyQilg', 'planet_names': ["Donlon", "Enchai", "Jebing", "Lerbin"], 'vehicle_names': ["Space pod", "Space rocket", "Space shuttle", "Space ship"] }
@@ -155,7 +164,8 @@ function showResults(e) {
     const finalResult = http.post('https://findfalcone.herokuapp.com/find', finalDetails).then(res => {
         console.log(res.planet_name);
         console.log(res.status);
-        window.location = `result.html?planets=${res.planet_name}&status=${res.status}`;
+        console.log(time);
+        window.location = `result.html?time=${time}&planet=${res.planet_name}&status=${res.status}`;
     });
 
 
