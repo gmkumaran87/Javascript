@@ -33,7 +33,7 @@ class UI {
             }).join(' ');
 
             form.innerHTML += `<label for="${currEl.name}-${n}" class="radio-btn">
-                    <input type = "radio" id="${currEl.name}-${n}" data-number="${el.total_no}" name="${currEl.name}-vehicles"> ${n1} <span> (${el.total_no})</span></label>`;
+                    <input type = "radio" id="${currEl.name}-${n}" data-name="${el.name}" data-number="${el.total_no}" name="${currEl.name}-vehicles"> ${n1} <span> (${el.total_no})</span></label>`;
 
         })
 
@@ -41,16 +41,16 @@ class UI {
 
     updateRadioButton(btn, cnt, vehicles_det) {
 
-        /*   const noOfVehicles = parseInt(btn.dataset.number);
-
-           let newCount = noOfVehicles - 1;*/
-
         const vehicleId = btn.id.split('-');
 
         btn.dataset.number = cnt;
         btn.nextElementSibling.innerHTML = `(${cnt})`;
 
-        if (cnt === 0) btn.disabled = true;
+        if (cnt === 0) {
+            btn.disabled = true;
+        } else {
+            btn.disabled = false;
+        }
 
         for (let i = 1; i <= 4; i++) {
             if (vehicleId[0] === `p${i}`) {
@@ -60,12 +60,20 @@ class UI {
             const nextId = document.getElementById(`p${i}-${vehicleId[1]}`);
 
             if (nextId) {
-                console.log(nextId);
-                if (cnt === 0) nextId.disabled = true;
+                if (cnt === 0) {
+                    nextId.disabled = true;
+                } else {
+                    nextId.disabled = false;
+                }
                 nextId.dataset.number = cnt;
                 nextId.nextElementSibling.innerHTML = `(${cnt})`;
             }
         }
+
+    }
+
+    displayResult(elem) {
+
 
     }
 

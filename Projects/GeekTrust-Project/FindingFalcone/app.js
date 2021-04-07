@@ -13,6 +13,8 @@ toggle.addEventListener('click', transition);
 
 const inputList = document.querySelectorAll('.inputPlanet');
 
+const resultBtn = document.getElementById('btnResult');
+
 const http = new HttpFetch();
 const ui = new UI();
 // Storing the Planet List
@@ -25,6 +27,9 @@ let selectedValues = {};
 
 // Storing the selected Radio button
 let selectedRadio = {};
+
+// Storing final selected values
+let finalDetails = { "token": "", "planet_names": [], "vehicle_names": [] };
 
 
 // Getting the Planets details
@@ -51,15 +56,13 @@ const vehicles = http.get('https://findfalcone.herokuapp.com/vehicles').then(res
 
 });
 
-
 // Getting the Token
-/*const apiToken = http.post('https://findfalcone.herokuapp.com/token', {}).then(res => {
+const apiToken = http.post('https://findfalcone.herokuapp.com/token', {}).then(res => {
+    finalDetails['token'] = res.token;
+    console.log(res);
+    console.log(finalDetails);
 
-    const inputData = { token: res.token, planet_names: ["Jebing", "Sapir", "Donlon", "Enchai"], vehicle_names: ["Space pod", 'Space rocket', 'Space ship', 'Space shuttle'] };
-    // Finding the Al Falcone
-    const finalResult = http.post('https://findfalcone.herokuapp.com/find', inputData).then(1 == 1)
-});*/
-
+});
 
 function updateDropDown(e) {
     let currentList = [];
@@ -72,6 +75,7 @@ function updateDropDown(e) {
 
     selectedValues[currElem.name] = selectedPlanet;
 
+    finalDetails['planet_names'].push(selectedPlanet);
 
     otherList = initialPlanets.filter(e => {
 
@@ -116,16 +120,50 @@ function btnClick(e) {
     let currRadioBtn = e.currentTarget;
     const noOfVehicles = parseInt(currRadioBtn.dataset.number);
     let newCount = noOfVehicles - 1;
-    const vehicleId = currRadioBtn.id.split('-');
+    const [currId, currIdName] = currRadioBtn.id.split('-');
 
-    selectedRadio[vehicleId[1]] = newCount;
+    if (selectedRadio[currId]) {
+        console.log('Value presents')
+        console.log(selectedRadio[currId]);
+        const prevBtn = document.getElementById(`${selectedRadio[currId]}`)
+        const prevCnt = parseInt(prevBtn.dataset.number) + 1;
+        console.log(prevBtn);
+        ui.updateRadioButton(prevBtn, prevCnt, vehicles_details)
+    }
+    selectedRadio[currId] = currRadioBtn.id;
 
     console.log(selectedRadio);
     ui.updateRadioButton(currRadioBtn, newCount, vehicles_details)
 
+    finalDetails['vehicle_names'].push(currRadioBtn.dataset.name);
+
+    console.log(finalDetails);
 }
 
+
+function showResults(e) {
+
+    console.log(e.currentTarget);
+
+
+
+    const inputData = { 'token': 'IdIggIIukusSUiEjzpIdlLlTnlyQilg', 'planet_names': ["Donlon", "Enchai", "Jebing", "Lerbin"], 'vehicle_names': ["Space pod", "Space rocket", "Space shuttle", "Space ship"] }
+
+    console.log(finalDetails);
+
+    // Finding the Al Falcone
+    const finalResult = http.post('https://findfalcone.herokuapp.com/find', finalDetails).then(res => {
+        console.log(res.planet_name);
+        console.log(res.status);
+        window.location = `result.html?planets=${res.planet_name}&status=${res.status}`;
+    });
+
+
+}
 
 inputList.forEach(elem => {
     elem.addEventListener('change', updateDropDown);
 })
+
+
+resultBtn.addEventListener('click', showResults);

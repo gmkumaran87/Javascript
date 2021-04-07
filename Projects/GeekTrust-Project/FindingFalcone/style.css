@@ -36,7 +36,7 @@
     --ff-secondary: "Open Sans", sans-serif;
     --transition: all 0.3s linear;
     --spacing: 0.1rem;
-    --radius: 0.25rem;
+    --radius: 0.35rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
@@ -159,11 +159,32 @@ nav {
     padding: 3rem;
 }
 
-.title {
+.title,
+.container-result {
     color: var(--clr-primary-2);
+    letter-spacing: var(--spacing);
     margin: 40px auto;
     text-align: center;
     font-size: 2.5rem;
+}
+
+.result-btn,
+.result-home {
+    font-family: var(--ff-secondary);
+    padding: 7px;
+    color: var(--clr-primary-2);
+    font-size: 1.2rem;
+    letter-spacing: var(--spacing);
+    border-radius: var(--radius);
+    border: 1px solid var(--clr-primary-2);
+    background-color: var(--clr-white);
+}
+
+.result-btn,
+.result-home:hover {
+    color: var(--clr-white);
+    background-color: var(--clr-green-light);
+    border: 1px solid var(--clr-grey-1);
 }
 
 .underline {
@@ -285,6 +306,15 @@ footer p {
     line-height: 1.25rem;
     font-size: 1rem;
     padding: 1rem;
+}
+
+.result-main {
+    text-align: center;
+    padding: 50px;
+}
+
+.result-timeTaken {
+    margin-top: 60px;
 }
 
 @media screen and (max-width: 802px) {
