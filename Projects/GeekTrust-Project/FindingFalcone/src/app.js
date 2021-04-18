@@ -1,4 +1,3 @@
-console.log('Im here')
 const toggle = document.querySelector('.nav-toggle')
 const links = document.querySelector('.links')
 
