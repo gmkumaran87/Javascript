@@ -34,9 +34,30 @@ let selectedRadio = {};
 // Storing final selected values
 let finalDetails = { "token": "", "planet_names": [], "vehicle_names": [] };
 
+const getRequests = async(url) => {
+    const jsonData = await http.get(url);
+
+    return jsonData;
+}
 
 // Getting the Planets details
-const planets = http.get('https://findfalcone.herokuapp.com/planets').then(data => {
+const newPlanets = getRequests('https://findfalcone.herokuapp.com/planets').then(data => {
+    data.forEach(el => planet_details.push(el));
+});
+
+
+// Getting the Vehicles
+const newVehicles = getRequests('https://findfalcone.herokuapp.com/vehicles').then(data => {
+    data.forEach(el => vehicles_details.push(el));
+});
+
+//modalOuter.exports = newPlanets;
+
+console.log(planet_details);
+console.log(vehicles_details);
+
+
+/*const planets = http.get('https://findfalcone.herokuapp.com/planets').then(data => {
 
     data.forEach(element => {
         planet_details.push(element);
@@ -49,13 +70,13 @@ const planets = http.get('https://findfalcone.herokuapp.com/planets').then(data 
 });
 
 
-// Getting the Vehicles
+
 const vehicles = http.get('https://findfalcone.herokuapp.com/vehicles').then(res => {
     res.forEach(e => {
         vehicles_details.push(e);
     })
 
-});
+});*/
 
 // Getting the Token
 const apiToken = http.post('https://findfalcone.herokuapp.com/token', {}).then(res => {
@@ -176,5 +197,9 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         modalOuter.classList.remove('open');
     }
-})
+});
 resultBtn.addEventListener('click', showResults);
+
+module.exports = function() {
+    return 'Hello'
+}
